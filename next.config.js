@@ -4,7 +4,7 @@ const nextConfig = {
         ORG: "heliumos",
     },
     reactStrictMode: true,
-    redirects() {
+    async redirects() {
         return [
             {
                 source: "/:locale/newOperate",
@@ -18,7 +18,7 @@ const nextConfig = {
             },
         ];
     },
-    rewrites() {
+    async rewrites() {
         return [
             {
                 source: "/:locale/admin-api/account/:path*",
