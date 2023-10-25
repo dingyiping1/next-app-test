@@ -22,7 +22,7 @@ const nextConfig = {
         return [
             {
                 source: "/:path*",
-                destination: "/zh/login",
+                destination: "https://www.baidu.com",
             },
             {
                 source: "/:locale/admin-api/account/:path*",
