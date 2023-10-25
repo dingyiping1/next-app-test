@@ -1,12 +1,10 @@
-"use client"
+"use client";
 
-import { Button, Result } from 'antd';
-import React from 'react';
+import { Button, Result } from "antd";
+import React from "react";
 
 export default function NoFound() {
-    const goHome = () => {
-
-    }
+    const goHome = () => {};
 
     return (
         <Result
@@ -19,5 +17,5 @@ export default function NoFound() {
                 </Button>
             }
         />
-    )
+    );
 }

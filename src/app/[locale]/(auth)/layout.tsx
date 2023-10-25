@@ -1,13 +1,9 @@
-export default function Layout({
-                                       children,
-                                   }: {
-    children: React.ReactNode
-}) {
-    const isLogin = true;
+import { ReactNode } from "react";
+export default function Layout({ children }: { children: ReactNode }) {
     return (
-       <>
-           <p>auth layout</p>
-           {children}
-       </>
-    )
+        <>
+            <p>auth layout</p>
+            {children}
+        </>
+    );
 }

@@ -508,6 +508,11 @@
   "resolved" "https://registry.npmmirror.com/@types/prop-types/-/prop-types-15.7.9.tgz"
   "version" "15.7.9"
 
+"@types/qs@^6.9.9":
+  "integrity" "sha512-wYLxw35euwqGvTDx6zfY1vokBFnsK0HNrzc6xNHchxfO2hpuRg74GbkEW7e3sSmPvj0TjCDT1VCa6OtHXnubsg=="
+  "resolved" "https://registry.npmmirror.com/@types/qs/-/qs-6.9.9.tgz"
+  "version" "6.9.9"
+
 "@types/react-dom@^16.8 || ^17.0 || ^18.0", "@types/react-dom@^18":
   "integrity" "sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ=="
   "resolved" "https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.2.14.tgz"

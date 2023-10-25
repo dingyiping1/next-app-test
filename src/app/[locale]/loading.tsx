@@ -1,8 +1,6 @@
-'use client'
-import { Spin  } from 'antd';
+"use client";
+import { Spin } from "antd";
 
 export default function Loading() {
-    return (
-        <Spin/>
-    )
+    return <Spin />;
 }

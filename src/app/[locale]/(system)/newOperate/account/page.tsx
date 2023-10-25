@@ -4,15 +4,21 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useAppDispatch } from "@/store";
 import { setCurrAccountId, setDetailModalVisible } from "@/store/slices/accountSlice";
 import { useSearchParams } from "next/navigation";
+import type { Fetcher } from "swr";
 import useSWR from "swr";
 import request from "@/utils/request";
 import qs from "qs";
+import type { PaginationProps } from "antd";
 import { Table, Button } from "antd";
 import type { ColumnProps } from "antd/lib/table";
 
 const TABLE_PAGE_SIZE_OPTIONS = ["20", "50", "100"];
 
-const REALNAME_STATUS_MAP = {
+interface StatusMap {
+    [key: string]: string;
+}
+
+const REALNAME_STATUS_MAP: StatusMap = {
     INIT: "未认证",
     SUBMITTED: "已提交",
     FAILED: "失败",
@@ -24,7 +30,7 @@ const REALNAME_STATUS_MAP = {
     WAITING_RISK: "风控中",
 };
 
-const fetcher = (url: string) => request.get(url).then((res) => res);
+const fetcher: Fetcher<any> = (url: string) => request.get(url).then((res) => res);
 
 const Page: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -32,7 +38,7 @@ const Page: React.FC = () => {
     const searchParams = useSearchParams();
 
     const [scrollHeight, setScrollHeight] = useState<any>();
-    const [curPage, setCurPage] = useState<number>();
+    const [curPage, setCurPage] = useState<number>(1);
     const [pageSize, setPageSize] = useState<number>();
 
     const searchQuery = useMemo(
@@ -103,35 +109,37 @@ const Page: React.FC = () => {
         },
     ];
 
-    const onPaginationChange = (page, pageSize) => {
+    const onPaginationChange: PaginationProps["onShowSizeChange"] = (page, pageSize) => {
         setCurPage(page);
         setPageSize(pageSize);
     };
 
     return (
         <>
-            <div className="ep-content" style={{ height: scrollHeight?.content }}>
-                <Table
-                    rowKey="id"
-                    id="1"
-                    size="small"
-                    className="ep-ant-table"
-                    columns={columns}
-                    loading={isLoading}
-                    dataSource={data?.data}
-                    pagination={{
-                        className: "ep-ant-pagination",
-                        showSizeChanger: true,
-                        showQuickJumper: true,
-                        pageSizeOptions: TABLE_PAGE_SIZE_OPTIONS,
-                        total: data?.pagination?.total_elements,
-                        current: curPage,
-                        pageSize,
-                        onChange: onPaginationChange,
-                    }}
-                    scroll={{ x: 1300, y: scrollHeight?.tableY }}
-                />
-            </div>
+            {!isLoading && !error && (
+                <div className="ep-content" style={{ height: scrollHeight?.content }}>
+                    <Table
+                        rowKey="id"
+                        id="1"
+                        size="small"
+                        className="ep-ant-table"
+                        columns={columns}
+                        loading={isLoading}
+                        dataSource={data?.data}
+                        pagination={{
+                            className: "ep-ant-pagination",
+                            showSizeChanger: true,
+                            showQuickJumper: true,
+                            pageSizeOptions: TABLE_PAGE_SIZE_OPTIONS,
+                            total: data?.pagination?.total_elements,
+                            current: curPage,
+                            pageSize,
+                            onChange: onPaginationChange,
+                        }}
+                        scroll={{ x: 1300, y: scrollHeight?.tableY }}
+                    />
+                </div>
+            )}
         </>
     );
 };

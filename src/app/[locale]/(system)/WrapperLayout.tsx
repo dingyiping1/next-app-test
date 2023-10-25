@@ -42,7 +42,11 @@ const fundTransferMenu: MenuProps["items"] = [
     },
 ];
 
-const menuMap = {
+type MenuMap = {
+    [key: string]: MenuProps["items"];
+};
+
+const menuMap: MenuMap = {
     newOperate: newOperateMenu,
     fundTransfer: fundTransferMenu,
 };

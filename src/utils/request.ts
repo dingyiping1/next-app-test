@@ -1,7 +1,8 @@
 import axios, { isCancel } from "axios";
+import type { AxiosError } from "axios";
 import { notification } from "antd";
 
-export const errorHandler = (error) => {
+export const errorHandler = (error: AxiosError) => {
     const { response, code, message } = error;
     const { status, data } = response || {};
     let showNotification = true,
@@ -56,10 +57,10 @@ export const errorHandler = (error) => {
         desc = "未知错误";
     }
     showNotification &&
-    notification.error({
-        message: msg,
-        description: desc,
-    });
+        notification.error({
+            message: msg,
+            description: desc,
+        });
 };
 
 const http = axios.create({

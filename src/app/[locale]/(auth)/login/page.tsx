@@ -1,7 +1,3 @@
 export default function Page() {
-    return (
-        <>
-            登录页
-        </>
-    )
+    return <>登录页</>;
 }
