@@ -1,12 +1,32 @@
 {
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "https://www.baidu.com"
+      "source": "/en/admin-api/account/:path*",
+      "destination": "http://account.testinner.easypayx.com/:path*"
+    },
+    {
+      "source": "/zh/admin-api/account/:path*",
+      "destination": "http://account.testinner.easypayx.com/:path*"
     },
     {
       "source": "/:locale/admin-api/account/:path*",
       "destination": "http://account.testinner.easypayx.com/:path*"
+    },
+    {
+      "source": "/en/admin-api/account/:path*",
+      "destination": "https://www.imooc.com"
+    },
+    {
+      "source": "/zh/admin-api/account/:path*",
+      "destination": "https://youku.com"
+    },
+    {
+      "source": "/:locale/admin-api/account/:path*",
+      "destination": "https://juejin.cn"
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://taobao.com"
     }
   ]
 }
