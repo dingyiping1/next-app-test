@@ -5,8 +5,8 @@
       "destination": "http://account.testinner.easypayx.com/:path*"
     },
     {
-      "source": "/:locale/:path*",
-      "destination": "/:locale/login"
+      "source": "/:path*",
+      "destination": "/zh/login"
     }
   ]
 }
