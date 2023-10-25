@@ -20,9 +20,17 @@ const nextConfig = {
     },
     async rewrites() {
         return [
+            // {
+            //     source: "/:path*",
+            //     destination: "https://www.baidu.com",
+            // },
             {
-                source: "/:path*",
-                destination: "https://www.baidu.com",
+                source: "/en/admin-api/account/:path*",
+                destination: "http://account.testinner.easypayx.com/:path*",
+            },
+            {
+                source: "/zh/admin-api/account/:path*",
+                destination: "http://account.testinner.easypayx.com/:path*",
             },
             {
                 source: "/:locale/admin-api/account/:path*",
