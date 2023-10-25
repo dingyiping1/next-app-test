@@ -1,8 +1,8 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/:locale/admin-api/account/:path*",
-      "destination": "http://account.testinner.easypayx.com/:path*"
+      "src": "/:locale/admin-api/account/(.*)",
+      "dest": "http://account.testinner.easypayx.com/$1"
     }
   ]
 }
