@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 export default async function Layout({ children, params: { locale } }: Props) {
     const locales = getLocales(locale);
 
-    console.log('husky test1')
+    console.log("husky test2");
 
     return (
         <html lang={locale}>
