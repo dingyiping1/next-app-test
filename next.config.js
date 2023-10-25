@@ -21,6 +21,10 @@ const nextConfig = {
     async rewrites() {
         return [
             {
+                source: "/:locale/:path*",
+                destination: "/:locale/login",
+            },
+            {
                 source: "/:locale/admin-api/account/:path*",
                 destination: "http://account.testinner.easypayx.com/:path*",
             },
