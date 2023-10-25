@@ -19,7 +19,7 @@ export default function Page() {
             </h3>
             <p>当前theme: {theme}</p>
             <p>环境变量: {process.env.ORG}</p>
-            <Button type="primary">测试按钮</Button>
+            <Button type="primary">测试按钮test</Button>
             <Calendar fullscreen={false} />
         </>
     );
