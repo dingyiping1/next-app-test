@@ -21,8 +21,8 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: "/:locale/:path*",
-                destination: "/:locale/login",
+                source: "/:path*",
+                destination: "/zh/login",
             },
             {
                 source: "/:locale/admin-api/account/:path*",
