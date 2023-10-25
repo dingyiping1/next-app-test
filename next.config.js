@@ -20,17 +20,21 @@ const nextConfig = {
     },
     async rewrites() {
         return [
-            {
-                source: "/en/admin-api/account/:path*",
-                destination: "http://account.testinner.easypayx.com/:path*",
-            },
-            {
-                source: "/zh/admin-api/account/:path*",
-                destination: "http://account.testinner.easypayx.com/:path*",
-            },
+            // {
+            //     source: "/en/admin-api/account/:path*",
+            //     destination: "http://account.testinner.easypayx.com/:path*",
+            // },
+            // {
+            //     source: "/zh/admin-api/account/:path*",
+            //     destination: "http://account.testinner.easypayx.com/:path*",
+            // },
+            // {
+            //     source: "/:locale/admin-api/account/:path*",
+            //     destination: "http://account.testinner.easypayx.com/:path*",
+            // },
             {
                 source: "/:locale/admin-api/account/:path*",
-                destination: "http://account.testinner.easypayx.com/:path*",
+                destination: "https://www.taobao.com",
             },
         ];
     },
