@@ -34,7 +34,7 @@ jobs:
               uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a # v2
               with:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
             - name: Docker meta
               id: meta
@@ -63,5 +63,5 @@ jobs:
               continue-on-error: true
               with:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_TOKEN }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
                   repository: dyp/next-app-test
