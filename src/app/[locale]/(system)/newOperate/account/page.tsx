@@ -4,9 +4,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useAppDispatch } from "@/store";
 import { setCurrAccountId, setDetailModalVisible } from "@/store/slices/accountSlice";
 import { useSearchParams } from "next/navigation";
-import type { Fetcher } from "swr";
 import useSWR from "swr";
-import request from "@/utils/request";
 import qs from "qs";
 import type { PaginationProps } from "antd";
 import { Table, Button } from "antd";
@@ -106,7 +104,7 @@ const Page: React.FC = () => {
             <Button type="primary" onClick={() => onShowDetail("testId")}>
                 测试modal弹窗
             </Button>
-            {!isLoading && !error && (
+            {!error && (
                 <div className="ep-content" style={{ height: scrollHeight?.content }}>
                     <Table
                         rowKey="id"

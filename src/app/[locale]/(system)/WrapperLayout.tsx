@@ -12,6 +12,10 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const items1: MenuProps["items"] = [
     {
+        key: "home",
+        label: "首页",
+    },
+    {
         key: "newOperate",
         label: "新运营",
     },
@@ -20,6 +24,8 @@ const items1: MenuProps["items"] = [
         label: "资金调拨",
     },
 ];
+
+const defaultNav = "home";
 
 const newOperateMenu: MenuProps["items"] = [
     {
@@ -64,13 +70,13 @@ const WrapperLayout: React.FC<IProps> = ({ children }: IProps) => {
         token: { colorBgContainer },
     } = theme.useToken();
 
-    const [currentNav, setCurrentNav] = useState("");
+    const [currentNav, setCurrentNav] = useState<string>("");
     const [leftMenu, setLeftMenu] = useState<MenuProps["items"]>([]);
-    const [currentMenu, setCurrentMenu] = useState("");
+    const [currentMenu, setCurrentMenu] = useState<string>("");
 
     useEffect(() => {
         const pathArr = pathname.split("/").filter((item) => !!item.trim());
-        const [currentNav, currentMenu] = pathArr;
+        const [currentNav = defaultNav, currentMenu] = pathArr;
         setCurrentNav(currentNav);
         setCurrentMenu(currentMenu);
     }, [pathname]);
