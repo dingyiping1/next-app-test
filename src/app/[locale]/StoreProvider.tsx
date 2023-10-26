@@ -8,6 +8,6 @@ type Props = {
     children: ReactNode;
 };
 
-export default async function StoreProvider({ children }: Props) {
+export default function StoreProvider({ children }: Props) {
     return <Provider store={store}>{children}</Provider>;
 }

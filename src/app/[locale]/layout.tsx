@@ -1,14 +1,13 @@
 import { ReactNode } from "react";
-import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { Inter } from "next/font/google";
-import StyleRegistry from "@/components/StyleRegistry";
+import StoreProvider from "@/app/[locale]/StoreProvider";
+import { SWRProvider } from "@/app/[locale]/SwrProvider";
+import StyleRegistry from "@/app/[locale]/StyleRegistry";
 import { ConfigProvider } from "antd";
 import type { Locale } from "antd/es/locale";
 import { locales } from "@/utils/locales";
 import type { Locales } from "@/utils/locales";
-import StoreProvider from "@/app/[locale]/StoreProvider";
-import { SWRProvider } from "@/app/[locale]/SwrProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,12 +38,8 @@ function getLocales(locale: Locales): LocalesResult {
 export function generateStaticParams() {
     return locales.map((locale: Locales) => ({ locale }));
 }
-export const metadata: Metadata = {
-    title: "EasyPay Admin",
-    description: "EasyPay后台管理系统",
-};
 
-export default async function Layout({ children, params: { locale } }: Props) {
+export default function Layout({ children, params: { locale } }: Props) {
     const locales = getLocales(locale);
 
     return (

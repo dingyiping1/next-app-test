@@ -1,7 +1,7 @@
 "use client";
 
-import { Button, Result } from "antd";
 import React from "react";
+import { Button, Result } from "antd";
 
 export default function NoFound() {
     const goHome = () => {};
