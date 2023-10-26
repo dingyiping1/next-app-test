@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-        insecureRewriteHosts: ["http://account.testinner.easypayx.com"],
-    },
     env: {
         ORG: "heliumos",
     },

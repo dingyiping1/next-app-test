@@ -30,8 +30,6 @@ const REALNAME_STATUS_MAP: StatusMap = {
     WAITING_RISK: "风控中",
 };
 
-const fetcher: Fetcher<any> = (url: string) => request.get(url).then((res) => res);
-
 const Page: React.FC = () => {
     const dispatch = useAppDispatch();
 
@@ -54,12 +52,9 @@ const Page: React.FC = () => {
         setPageSize(Number(searchParams.get("pageSize") || TABLE_PAGE_SIZE_OPTIONS[0]));
     }, [searchParams]);
 
-    const { data, error, isLoading } = useSWR(
-        `/admin-api/account/admin/v1/accounts?${qs.stringify(searchQuery)}`,
-        fetcher,
-    );
+    const { data, error, isLoading } = useSWR(`/admin-api/account/admin/v1/accounts?${qs.stringify(searchQuery)}`);
 
-    useSWR(`/testApi/admin/webTest`, fetcher);
+    useSWR(`/testApi/admin/webTest`);
 
     const onShowDetail = (id: string) => {
         dispatch(setCurrAccountId(id));
