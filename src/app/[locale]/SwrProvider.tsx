@@ -1,5 +1,6 @@
 "use client";
-import { Fetcher, SWRConfig } from "swr";
+import type { Fetcher } from "swr";
+import { SWRConfig } from "swr";
 import { ReactNode } from "react";
 import request from "@/utils/request";
 
