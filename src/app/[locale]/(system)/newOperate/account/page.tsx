@@ -59,6 +59,8 @@ const Page: React.FC = () => {
         fetcher,
     );
 
+    useSWR(`/testApi/admin/webTest`, fetcher);
+
     const onShowDetail = (id: string) => {
         dispatch(setCurrAccountId(id));
         dispatch(setDetailModalVisible(true));
@@ -90,16 +92,6 @@ const Page: React.FC = () => {
             title: "手机号",
             dataIndex: ["legal_entity", "phone"],
         },
-        // {
-        //     title: '创建时间',
-        //     dataIndex: 'gmt_create',
-        //     render: text => <span>{text ? timeFormat(text, 'minute') : ''}</span>,
-        // },
-        // {
-        //     title: '商户',
-        //     dataIndex: 'merchant_id',
-        //     render: text => getMerchantNameById(text),
-        // },
         {
             title: "状态",
             dataIndex: "status",
@@ -116,6 +108,9 @@ const Page: React.FC = () => {
 
     return (
         <>
+            <Button type="primary" onClick={() => onShowDetail("testId")}>
+                测试modal弹窗
+            </Button>
             {!isLoading && !error && (
                 <div className="ep-content" style={{ height: scrollHeight?.content }}>
                     <Table

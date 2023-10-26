@@ -27,6 +27,10 @@ const nextConfig = {
                 source: "/:locale/admin-api/account/:path*",
                 destination: "http://account.testinner.easypayx.com/:path*",
             },
+            {
+                source: "/:locale/testApi/:path*",
+                destination: "https://www.baidu.com",
+            },
         ];
     },
     webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => {
