@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Metadata } from "next";
-import "normalize.css";
+import "antd/dist/reset.css";
 import "./globals.css";
 
 type Props = {

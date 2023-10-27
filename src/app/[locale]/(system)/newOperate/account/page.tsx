@@ -9,6 +9,7 @@ import qs from "qs";
 import type { PaginationProps } from "antd";
 import { Table, Button } from "antd";
 import type { ColumnProps } from "antd/lib/table";
+import accountApi from "@/api/account";
 
 const TABLE_PAGE_SIZE_OPTIONS = ["20", "50", "100"];
 
@@ -50,7 +51,7 @@ const Page: React.FC = () => {
         setPageSize(Number(searchParams.get("pageSize") || TABLE_PAGE_SIZE_OPTIONS[0]));
     }, [searchParams]);
 
-    const { data, error, isLoading } = useSWR(`/admin-api/account/admin/v1/accounts?${qs.stringify(searchQuery)}`);
+    const { data, error, isLoading } = useSWR(`${accountApi.getAccountList}?${qs.stringify(searchQuery)}`);
 
     useSWR(`/testApi/admin/webTest`);
 

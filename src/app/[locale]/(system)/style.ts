@@ -7,6 +7,7 @@ const useStyles = createStyles(({ token, css, prefixCls }) => {
     };
 
     return {
+        // 支持 css object 的写法
         homeTestStyle1: {
             ...commonStyle,
             color: token.colorPrimary,
@@ -15,6 +16,11 @@ const useStyles = createStyles(({ token, css, prefixCls }) => {
             marginTop: "50px",
             color: "orange",
         },
+        // 也支持通过 css 字符串模板获得和 普通 css 一致的书写体验
+        homeTestStyle3: css`
+            margin-top: ${token.padding}px;
+            color: orange;
+        `,
     };
 });
 

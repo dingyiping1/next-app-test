@@ -19,7 +19,11 @@ const StyleRegistry = ({ children }: PropsWithChildren) => {
         return <>{styles}</>;
     });
 
-    return <StyleProvider cache={extractStaticStyle.cache}>{children}</StyleProvider>;
+    return (
+        <StyleProvider cache={extractStaticStyle.cache} hashPriority="high">
+            {children}
+        </StyleProvider>
+    );
 };
 
 export default StyleRegistry;
