@@ -1,10 +1,15 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: "standalone",
+    // 自定义环境变量
     env: {
         ORG: "heliumos",
     },
     reactStrictMode: true,
+    // 重定向
     async redirects() {
         return [
             {
@@ -24,6 +29,7 @@ const nextConfig = {
             },
         ];
     },
+    // 可以用于接口代理
     async rewrites() {
         return [
             {
@@ -42,4 +48,4 @@ const nextConfig = {
     },
 };
 
-module.exports = nextConfig;
+export default withNextIntl(nextConfig);

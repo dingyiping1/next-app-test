@@ -1,4 +1,6 @@
 {
-  "home": "Home",
-  "welcome": "Hi, {user}"
+  "Home": {
+    "home": "Home",
+    "welcome": "Hi, {user}"
+  }
 }
