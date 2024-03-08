@@ -1,13 +1,11 @@
-"use client";
+'use client';
+import { useTransition } from 'react';
+import { useLocale } from 'next-intl';
+import { useRouter, usePathname } from '@/navigation';
+import { Select } from 'antd';
+import { Locale, locales } from '@/config';
 
-import { useTransition } from "react";
-import { useLocale } from "next-intl";
-import { useRouter, usePathname } from "next-intl/client";
-import { Select } from "antd";
-import type { Locales } from "@/utils/locales";
-import { locales } from "@/utils/locales";
-
-const options = locales.map((locale: Locales) => ({
+const options = locales.map((locale: Locale) => ({
     value: locale,
     label: locale,
 }));

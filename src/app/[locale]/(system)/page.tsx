@@ -1,31 +1,32 @@
-"use client";
-import { RootState, useAppSelector } from "@/store";
-import { useLocale, useTranslations } from "next-intl";
-import { useRouter, usePathname } from "next-intl/client";
-import { Button, Calendar } from "antd";
-import useStyles from "./style";
+'use client';
+import { RootState, useAppSelector } from '@/store';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/navigation';
+import { Button, Calendar } from 'antd';
+import useStyles from './style';
 
 export default function Page() {
+    const t = useTranslations('Home');
+
     const router = useRouter();
-    const locale = useLocale();
     const theme = useAppSelector((state: RootState) => state.global.theme);
+
     const { styles } = useStyles();
-    const t = useTranslations();
 
     const goToLogin = () => {
-        router.push(`/login`, { locale });
+        router.push(`/login`);
     };
 
     const goToRegister = () => {
-        router.push(`/register`, { locale });
+        router.push(`/register`);
     };
 
     return (
         <>
-            <h2 className={styles.homeTestStyle1}>{t("home")}</h2>
+            <h2 className={styles.homeTestStyle1}>{t('home')}</h2>
             <h3 className={styles.homeTestStyle2}>
-                {t("welcome", {
-                    user: "dyp",
+                {t('welcome', {
+                    user: 'dyp',
                 })}
             </h3>
             <p>当前theme: {theme}</p>

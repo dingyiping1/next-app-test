@@ -1,8 +1,8 @@
-"use client";
-import type { Fetcher } from "swr";
-import { SWRConfig } from "swr";
-import { ReactNode } from "react";
-import request from "@/utils/request";
+'use client';
+import type { Fetcher } from 'swr';
+import { SWRConfig } from 'swr';
+import { ReactNode } from 'react';
+import request from '@/utils/request';
 
 type Props = {
     children: ReactNode;

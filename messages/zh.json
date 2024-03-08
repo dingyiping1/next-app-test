@@ -1,4 +1,6 @@
 {
-  "home": "首页",
-  "welcome": "你好，{user}"
+  "Home": {
+    "home": "首页",
+    "welcome": "你好，{user}"
+  }
 }

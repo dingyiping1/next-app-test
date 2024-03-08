@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { StyleProvider, extractStaticStyle } from "antd-style";
-import { useServerInsertedHTML } from "next/navigation";
-import { PropsWithChildren, useRef } from "react";
+import { StyleProvider, extractStaticStyle } from 'antd-style';
+import { useServerInsertedHTML } from 'next/navigation';
+import { PropsWithChildren, useRef } from 'react';
 
 const StyleRegistry = ({ children }: PropsWithChildren) => {
     const isInsert = useRef(false);

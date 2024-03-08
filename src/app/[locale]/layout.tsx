@@ -1,72 +1,41 @@
-import { ReactNode } from "react";
-import { NextIntlClientProvider } from "next-intl";
-import { Inter } from "next/font/google";
-import StoreProvider from "@/app/[locale]/StoreProvider";
-import { SWRProvider } from "@/app/[locale]/SwrProvider";
-import StyleRegistry from "@/app/[locale]/StyleRegistry";
-import { ConfigProvider } from "antd";
-import type { Locale } from "antd/es/locale";
-import { locales } from "@/utils/locales";
-import type { Locales } from "@/utils/locales";
-
-const inter = Inter({ subsets: ["latin"] });
+import { ReactNode } from 'react';
+import StoreProvider from '@/provider/StoreProvider';
+import NextIntlProvider from '@/provider/NextIntlPrivider';
+import { SWRProvider } from '@/provider/SwrProvider';
+import StyleRegistry from '@/provider/StyleRegistry';
+import { ConfigProvider } from 'antd';
+import { locales, Locale } from '@/config';
+import config from '@/antd/config';
+import { getAntdLocale } from '@/antd/locale';
+import { Metadata } from 'next';
 
 type Props = {
     children: ReactNode;
-    params: { locale: Locales };
+    params: { locale: Locale };
 };
 
-interface LocalesResult {
-    locale: Locales;
-    messages: any;
-    antdLocale: Locale;
-}
-
-const antdLocaleMap = {
-    zh: "zh_CN",
-    en: "en_US",
+export const metadata: Metadata = {
+    title: 'EasyPay Admin',
+    description: 'EasyPay后台管理系统',
 };
-
-function getLocales(locale: Locales): LocalesResult {
-    return {
-        locale,
-        messages: require(`../../../messages/${locale}.json`),
-        antdLocale: require(`antd/locale/${antdLocaleMap[locale]}`).default,
-    };
-}
 
 export function generateStaticParams() {
-    return locales.map((locale: Locales) => ({ locale }));
+    return locales.map((locale: Locale) => ({ locale }));
 }
 
 export default function Layout({ children, params: { locale } }: Props) {
-    const locales = getLocales(locale);
+    const antdLocale = getAntdLocale(locale);
 
     return (
         <html lang={locale}>
-            <body className={inter.className}>
+            <body>
                 <StoreProvider>
                     <SWRProvider>
-                        <NextIntlClientProvider locale={locale} messages={locales.messages}>
-                            <ConfigProvider
-                                theme={{
-                                    token: {
-                                        colorPrimary: "green",
-                                    },
-                                    components: {
-                                        Button: {
-                                            colorPrimary: "red",
-                                        },
-                                        Select: {
-                                            colorBorder: "yellow",
-                                        },
-                                    },
-                                }}
-                                locale={locales.antdLocale}
-                            >
+                        <NextIntlProvider>
+                            <ConfigProvider {...config} locale={antdLocale}>
                                 <StyleRegistry>{children}</StyleRegistry>
                             </ConfigProvider>
-                        </NextIntlClientProvider>
+                        </NextIntlProvider>
                     </SWRProvider>
                 </StoreProvider>
             </body>
